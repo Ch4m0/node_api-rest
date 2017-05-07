@@ -1,0 +1,54 @@
+	<input type="email" id="email" placeholder="your email">
+	<br>
+	<input type="password" id="password" placeholder="your password">
+	<br>
+
+	<input type="button" value="boton" onclick="send()">
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<script>
+	function send(){
+		console.log('entro');
+
+		const formData = {
+			email: document.getElementById('email').value,
+			password: document.getElementById('password').value
+		};
+		console.log(formData);
+
+		$.ajax({
+			url : "/api/signIn",
+			type: "POST",
+			data : formData, 
+			dataType:'json',
+			success: function(data)
+			{
+				console.log(data.token) 
+				localStorage.setItem('token', data.token);
+				alert('usuario logeado');
+
+			},
+			error: function (err) 
+			{
+				alert('usuario no encontrado');
+
+			},
+		});
+
+	}
+
+/*formLogin.addEventListener('submit', event => {
+	event.preventDefault()
+	fetch('/api/signIn', {
+		method: 'POST',
+		body: formData
+	})
+	.them(res => res.json())
+	.them(data => console.log(data))
+
+})*/
+
+	
+</script>
