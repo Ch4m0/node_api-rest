@@ -36,9 +36,16 @@ function signIn(req, res){
 
 	});
 
+
 }
+function getUsers(req, res){
+		User.find((err, user)=>{
+			return res.status(200).send({users:user});
+		})
+	}
 
 module.exports = {
 	signUp,
-	signIn 
+	signIn,
+	getUsers
 }

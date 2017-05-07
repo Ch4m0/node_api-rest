@@ -1,13 +1,13 @@
 	<input type="email" id="email" placeholder="your email">
 	<br>
 	<input type="password" id="password" placeholder="your password">
-	<br>
-
-	<input type="button" value="boton" onclick="send()">
+	<br> 
+	<input type="button" value="Iniciar seccion" onclick="send()">
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+
 <script>
 	function send(){
 		console.log('entro');
@@ -19,7 +19,7 @@
 		console.log(formData);
 
 		$.ajax({
-			url : "/api/signIn",
+			url : "/api/signUp",
 			type: "POST",
 			data : formData, 
 			dataType:'json',
